@@ -1,11 +1,15 @@
 .Harry {
     color: white;
-    text-align: left;
+    text-align: center;
 }
 .rules {
     color: white;
     padding-top: 0px;
-
+    text-align: center;
+    padding-left: 50px;
+}
+.timer {
+   float: left;
 }
 body {
     background-image:url("../images/castle.jpeg");
@@ -15,4 +19,13 @@ body {
    background-repeat: no-repeat;
    background-attachment: fixed;
    background-size: 100% auto;
+}
+#questions {
+    padding-top: 100px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+.answer1 {
+    padding-right: 10px;
 }

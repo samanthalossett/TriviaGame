@@ -1,8 +1,8 @@
-var timer= 6;
+var timer= 4;
 var interval; 
 var score=0; //will keep track of users score//
-var q1;
-q1=("What object must be caught in order to end a Quidditch match? A=The Golden Snitch");
+// var q1;
+// q1=("What object must be caught in order to end a Quidditch match? A=The Golden Snitch");
 
 
 $( document ).ready(function() { //"now start loading javasctipt and JQ"//
@@ -15,7 +15,7 @@ $(".timer").on("click", start()); //**HELP** */when button is clicked, start fun
 function start(){     //function to start the timer and call decrement fucntion//
     clearInterval(interval);
     interval= setInterval(decrement, 1000);
-    $(".questions").text(q1);
+    // $(".questions").text(q1);
 }
 
 function stop(){  //function to stop timer and clear the interval//
@@ -36,7 +36,7 @@ function decrement(){  //decrement function to decrease number from 60 by 1 and 
 }
 })
 
-//come up with 5 questions and answers://
+//come up with 5 questions and answers://-done. 
 //"You're a little scary sometimes, you know that? Brilliant... but scary." Who is Ron giving this awkward compliment to? A=Hermione//
 //What object must be caught in order to end a Quidditch match? A=The Golden Snitch//
 //In "Harry Potter & the Order of the Phoenix", what colour is Tonks' hair when we first meet her? A=Purple//
