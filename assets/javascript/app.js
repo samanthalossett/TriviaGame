@@ -1,29 +1,61 @@
 var timer= 4;
 var interval; 
 var score=0; //will keep track of users score//
-// var q1;
-// q1=("What object must be caught in order to end a Quidditch match? A=The Golden Snitch");
-
+var data=[  // object, array, etc.//
+    {
+        question:"What object must be caught in order to end a Quidditch match?",
+            answers: ["Hermione", "Harry", "Ron"],
+            correctAnswer: "Hermione",
+    },
+    {
+        question:"In Harry Potter & the Order of the Phoenix, what colour is Tonks' hair when we first meet her?",
+            answers: ["Hermione", "Harry", "Ron"],
+            correctAnswer: "Hermione",
+    },
+    {
+        question:"In The Prisoner of Azkaban Professor Lupin played music in his class. What did he play the music on?",
+            answers: ["Hermione", "Harry", "Ron"],
+            correctAnswer: "Hermione",
+    },
+    {
+        question:"What object must be caught in order to end a Quidditch match?",
+            answers: ["Hermione", "Harry", "Ron"],
+            correctAnswer: "Hermione",
+    },
+     
+];
 
 $( document ).ready(function() { //"now start loading javasctipt and JQ"//
         console.log( "ready!" );
 
+function appendQuestions(){
+    for (var i=0; i<data.length; i++){  // for loop to iterate through my array//
+           $("#questions").append("<h2>" + data[i].question + "</h2>")   
+                for (var j=0; j<data[i].answers.length; j++){
+                    $("#questions").append("<button>" + data[i].answers[j] + "</button>") //will have to vhange these to radio buttons eventually, also create some value attributes// value=data[i].answers[j] inside the buttons//
+                }         
+}
+}
 
-$(".timer").on("click", start()); //**HELP** */when button is clicked, start function starts, its starting without clicking it//
+$(".timer").click(function() { //when button is clicked, start function starts, its starting without clicking it//
+    start()
+}); 
 
 
 function start(){     //function to start the timer and call decrement fucntion//
     clearInterval(interval);
     interval= setInterval(decrement, 1000);
-    // $(".questions").text(q1);
+    appendQuestions();
 }
 
 function stop(){  //function to stop timer and clear the interval//
     clearInterval(interval);  
 }
-// function reset(){   // **HELP**/I want to use this function to start the timer all over again /
-//     timer=6;
-//     }
+
+function reset(){   //function to start the timer all over again /
+    timer=4;
+    }
+
 function decrement(){  //decrement function to decrease number from 60 by 1 and replace the html text//
     timer--;
     $(".timer").html(timer);
@@ -31,16 +63,11 @@ function decrement(){  //decrement function to decrease number from 60 by 1 and 
         stop();
         alert("Times up!");
         $(".timer").html("Try again!");
-        // reset();  
+        reset();  
     }
 }
 })
 
-//come up with 5 questions and answers://-done. 
-//"You're a little scary sometimes, you know that? Brilliant... but scary." Who is Ron giving this awkward compliment to? A=Hermione//
-//What object must be caught in order to end a Quidditch match? A=The Golden Snitch//
-//In "Harry Potter & the Order of the Phoenix", what colour is Tonks' hair when we first meet her? A=Purple//
-//In "The Prisoner of Azkaban" Professor Lupin played music in his class. What did he play the music on? A= a record player//
 
 //insert Q1 once "timer" button is clicked//
 
