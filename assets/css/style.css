@@ -21,10 +21,11 @@ body {
    background-size: 100% auto;
 }
 #questions {
-    padding-top: 100px;
+    padding-top: 50px;
     text-align: center;
     color: white;
-    font-weight: bold;
+    /* font-weight: bold; */
+    font-size: 10px;
 }
 .answer1 {
     padding-right: 10px;

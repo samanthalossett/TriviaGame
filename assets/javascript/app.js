@@ -1,28 +1,23 @@
-var timer= 4;
+var timer= 6;
 var interval; 
 var score=0; //will keep track of users score//
 var data=[  // object, array, etc.//
+
     {
         question:"What object must be caught in order to end a Quidditch match?",
-            answers: ["Hermione", "Harry", "Ron"],
-            correctAnswer: "Hermione",
+            answers: ["Ball", "Snitch", "Nimbus 2,000"],
+            correctAnswer: "Snitch",
     },
     {
         question:"In Harry Potter & the Order of the Phoenix, what colour is Tonks' hair when we first meet her?",
-            answers: ["Hermione", "Harry", "Ron"],
-            correctAnswer: "Hermione",
+            answers: ["Purple", "Blue", "Pink"],
+            correctAnswer: "Pink",
     },
     {
         question:"In The Prisoner of Azkaban Professor Lupin played music in his class. What did he play the music on?",
-            answers: ["Hermione", "Harry", "Ron"],
-            correctAnswer: "Hermione",
+            answers: ["Record Player", "Discman", "Radio"],
+            correctAnswer: "Record Player",
     },
-    {
-        question:"What object must be caught in order to end a Quidditch match?",
-            answers: ["Hermione", "Harry", "Ron"],
-            correctAnswer: "Hermione",
-    },
-     
 ];
 
 $( document ).ready(function() { //"now start loading javasctipt and JQ"//
@@ -32,17 +27,17 @@ function appendQuestions(){
     for (var i=0; i<data.length; i++){  // for loop to iterate through my array//
            $("#questions").append("<h2>" + data[i].question + "</h2>")   
                 for (var j=0; j<data[i].answers.length; j++){
-                    $("#questions").append("<button>" + data[i].answers[j] + "</button>") //will have to vhange these to radio buttons eventually, also create some value attributes// value=data[i].answers[j] inside the buttons//
+                    
+                    $("#questions").append("<input type='radio'>" + data[i].answers[j] + "</input>") // also create some value attributes// value=data[i].answers[j] inside the buttons//
                 }         
 }
 }
 
-$(".timer").click(function() { //when button is clicked, start function starts, its starting without clicking it//
+$(".timer").click(function() { //when button is clicked, start function starts//
     start()
 }); 
 
-
-function start(){     //function to start the timer and call decrement fucntion//
+function start(){     //function to start the timer and call decrement fucntion, then append the questions//
     clearInterval(interval);
     interval= setInterval(decrement, 1000);
     appendQuestions();
@@ -53,7 +48,8 @@ function stop(){  //function to stop timer and clear the interval//
 }
 
 function reset(){   //function to start the timer all over again /
-    timer=4;
+    timer=6;
+    $("#questions").empty();
     }
 
 function decrement(){  //decrement function to decrease number from 60 by 1 and replace the html text//
