@@ -74,6 +74,6 @@ function decrement(){  //decrement function to decrease number from 60 by 1 and 
 }
 
 })
-
+// grab the user ansers, compare w/ correct answers, add tos core board  // **HELP**
 //when timer is up OR user answered each Q, end game and give result//
 
