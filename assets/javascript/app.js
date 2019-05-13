@@ -7,6 +7,7 @@ var data=[  // object, array, etc.//
         question:"What object must be caught in order to end a Quidditch match?",
             answers: ["Ball", "Snitch", "Nimbus 2,000"],
             correctAnswer: "Snitch",
+           
     },
     {
         question:"In Harry Potter & the Order of the Phoenix, what colour is Tonks' hair when we first meet her?",
@@ -27,10 +28,11 @@ function appendQuestions(){
     for (var i=0; i<data.length; i++){  // for loop to iterate through my array//
            $("#questions").append("<h2>" + data[i].question + "</h2>")   
                 for (var j=0; j<data[i].answers.length; j++){
+                    $("#questions").append("<input type='radio' value=data[i].answers[j]>" + data[i].answers[j] + "</input>") // also create some value attributes// value=data[i].answers[j] inside the buttons//
                     
-                    $("#questions").append("<input type='radio'>" + data[i].answers[j] + "</input>") // also create some value attributes// value=data[i].answers[j] inside the buttons//
                 }         
 }
+
 }
 
 $(".timer").click(function() { //when button is clicked, start function starts//
@@ -45,8 +47,15 @@ function start(){     //function to start the timer and call decrement fucntion,
 
 function stop(){  //function to stop timer and clear the interval//
     clearInterval(interval);  
+    
 }
-
+function keepScore(){
+    $("#questions").on("click", function(){
+        data[i].answers[j]=== correctAnswer;
+            score++;
+            console.log(score);
+        })
+}
 function reset(){   //function to start the timer all over again /
     timer=6;
     $("#questions").empty();
@@ -58,17 +67,13 @@ function decrement(){  //decrement function to decrease number from 60 by 1 and 
     if (timer=== 0){
         stop();
         alert("Times up!");
+        keepScore();
         $(".timer").html("Try again!");
         reset();  
     }
 }
+
 })
 
-
-//insert Q1 once "timer" button is clicked//
-
-//once user clicks an answer, go to Q2//
-
-//and so on//
 //when timer is up OR user answered each Q, end game and give result//
 
