@@ -13,6 +13,8 @@
 }
 body {
     background-image:url("../images/castle.jpeg");
+    position: absolute;
+    z-index: -1;
     height: 100%;
     width: 100%;
     background-position: center; 
@@ -24,9 +26,15 @@ body {
     padding-top: 50px;
     text-align: center;
     color: white;
-    /* font-weight: bold; */
+    font-weight: bold;
     font-size: 10px;
 }
 .answer1 {
     padding-right: 10px;
 }
+#scoreboard {
+    color: white;
+    font-weight: bold;
+   
+}
+

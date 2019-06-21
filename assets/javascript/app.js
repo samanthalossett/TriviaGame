@@ -28,7 +28,7 @@ function appendQuestions(){
     for (var i=0; i<data.length; i++){  // for loop to iterate through my array//
            $("#questions").append("<h2>" + data[i].question + "</h2>")   
                 for (var j=0; j<data[i].answers.length; j++){
-                    $("#questions").append("<input type='radio' value=data[i].answers[j]>" + data[i].answers[j] + "</input>") ;
+                    $("#questions").append(`<input type="radio" name= ${i} id= ${i} value=${data[i].answers[j]} >  ${data[i].answers[j]}  </input>`);
         }         
     }
 }
@@ -37,56 +37,56 @@ $(".timer").click(function() { //when button is clicked, start function starts//
     start()
 }); 
 
+
 function start(){     //function to start the timer and call decrement fucntion, then append the questions//
     clearInterval(interval);
     interval= setInterval(decrement, 1000);
     appendQuestions();
+    $("#scoreboard").empty();
 }
 
 function stop(){  //function to stop timer and clear the interval//
     clearInterval(interval);  
+    timer=6;
     
 }
-// function keepScore(){     // **HELP** im trying to "grab" what the user clicks and assess if === correctAnswer//
-//         // var answerValue= val(data.answers);
 
-
-//     // $("#questions").on("click", function(){
-//     //     if (data[i].answers[j]=== data.correctAnswer){
-//     //         score++;
-//     //         alert("the keepScore function is working sam");     //***HELP THIS ISNT WORKING***??// */
-//     //         console.log("is this funvtion even running?");   //no it is not//
-//     //     }
-//         // var response= data[i].answers[j];
-//         //             if(response=== data.correctAnswer){       // **HELP, tried this too, no work//
-//         //                 alert("correct!");
-//         //             }
-        
-// //         if(document.getElementById('#questions').clicked == true)    //**HELP, didnt work either// */
-// // {
-// //    alert("button was clicked");
-// // }
-
-//         })
-// }
 function reset(){   //function to start the timer all over again /
-    timer=6;
     $("#questions").empty();
+   
     }
+                                    /// HELP HERE**** I want to get the value of the user button clicks!**//
+function getScore(){
+        var q1= $("input[name=0]:checked").val();
+        var q2= $("input[name=1]:checked").val();
+        var q3= $("input[name=2]:checked").val();
+        var userAnswers= [q1, q2, q3];
+        var correctAnswers= ["Snitch","Pink","Record Player",];
+        for (var k=0; k<userAnswers.length; k++) {
+            if (userAnswers[k]=== correctAnswers[k]){
+                score++;
+            }
+        }
+
+    console.log(q1, q2, q3);
+}
 
 function decrement(){  //decrement function to decrease number from 60 by 1 and replace the html text//
     timer--;
     $(".timer").html(timer);
     if (timer=== 0){
+        getScore(); 
         stop();
         alert("Times up!");
-        // keepScore();
-        alert ("You got" + " " + score + " " + "correct! - this isnt true, its just not working"); //when timer is up OR user answered each Q, end game and give result//
+        $("#scoreboard").append("<h1>", 'You scored'," ", score,  "</h1>");
         $(".timer").html("Try again!");
         reset();  
+       
     }
+    
+    
 }
 })
-// grab the user answers, compare w/ correct answers, add tos core board  // **HELP**
+
 
 
